@@ -13,10 +13,14 @@ var config = {
     }
 }
 
-sql.connect(config, (err) => {
-    if (err) {
-        console.log(err);
-    } else {
+const pool = new sql.ConnectionPool(config);
+
+pool.connect().then(() => {
+    try {
         console.log("Connected to the database");
+    } catch (err) {
+        console.error("Error connecting to the database", err);
     }
 });
+
+module.exports = pool;

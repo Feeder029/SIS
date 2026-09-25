@@ -1,11 +1,8 @@
 const express = require('express');
+const productController = require('../controllers/product_controllers');
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-    res.json({
-        message: "get all"
-    });
-});
+routes.get('/', productController.getAllProducts);
 
 routes.get('/:id', (req, res) => {
     const { id } = req.params;
