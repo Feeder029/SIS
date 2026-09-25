@@ -4,11 +4,8 @@ const PORT = 5000;
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.json({
-        message: "This is a test"
-    });
-});
+const productRoutes = require("./routes/product_routes");
+app.use("/products", productRoutes);
 
 app.listen(PORT, () => {
     console.log(`The server is running on http://localhost:${PORT}`);
